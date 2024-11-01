@@ -1,4 +1,5 @@
 package model;
+import model.JugadorHockey;
 
 public class Equipo {
 
@@ -8,11 +9,30 @@ public class Equipo {
 
     private JugadorHockey[] jugadores = new JugadorHockey[CANTIDAD_JUGADORES];
 
-    public void agregarJugador(JugadorHockey jugador, int posicion) {
-        if (posicion >= 0 && posicion < jugadores.length) {
-            jugadores[posicion] = jugador;
+
+    public Equipo(String nombreequipo){
+        this.nombreEquipo = nombreequipo;
+
+    }
+
+    public void agregarJugador(JugadorHockey jugador) {
+        for (int i = 0; i < jugadores.length; i++) {
+            if (jugadores[i] == null) {
+                jugadores[i] = jugador;
+                break;
+            }
         }
     }
+    public String getTeamName(){
+        return this.nombreEquipo;
+    }
+
+    public JugadorHockey crearjugador(String nombre, int edad, Posicion posicion, int numero){
+        JugadorHockey jugador = new JugadorHockey(nombre, edad, posicion, numero);
+        return jugador;
+    }
+
+    
 
     public JugadorHockey[] getJugadores() {
         return jugadores;
